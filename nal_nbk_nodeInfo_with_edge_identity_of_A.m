@@ -25,12 +25,7 @@ function [edges, g1_of_A] = nal_nbk_nodeInfo_with_edge_identity_of_A(cktnetlist)
        
     g1_of_A = cell(N,1);
     for i = 1:length(cktnetlist.elements)
-        
-        %%% writing for edges as global variable
-
         edges = [edges ; cktnetlist.elements{i}.nodes];
-
-
         if (nal_nbk_A_and_B_part(i) == 1) %% this will allow the elements belonging to the only A-type 
             edge = cktnetlist.elements{i}.nodes;
             node1 = edge(1,1);
@@ -41,19 +36,14 @@ function [edges, g1_of_A] = nal_nbk_nodeInfo_with_edge_identity_of_A(cktnetlist)
             else 
                 node1 = str2num(cell2mat(node1));
             end
-
             if (strcmp(node2,'gnd'))
                 node2 = N;
             else 
                 node2 = str2num(cell2mat(node2));
             end
-
                 g1_of_A{node1} = [g1_of_A{node1}, i];
                 g1_of_A{node2} = [g1_of_A{node2}, i];
         end
-        
     end
-
-    
 end
 

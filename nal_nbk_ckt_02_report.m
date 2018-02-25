@@ -11,7 +11,7 @@ function cktnetlist = nal_nbk_ckt_02_report()
 
 % ------------------------- written : Sep 05, 2017 -------------------------------
     clear cktnetlist;
-    cktnetlist.cktname = 'nal_nbk_ckt_02';
+    cktnetlist.cktname = 'nal_nbk_ckt_02_report';
  
     cktnetlist.nodenames = {'1','2','3','4','5','6','7','8'};
     cktnetlist.groundnodename = 'gnd'; % 
@@ -19,7 +19,7 @@ function cktnetlist = nal_nbk_ckt_02_report()
    % cM = capModSpec();
     iM = isrcModSpec();
     vM = vsrcModSpec();
-%%%% ===================== block 01 (A-network) ========================================%%%
+% ===================== block 01 (A-network) ===================================
     cktnetlist = add_element(cktnetlist, rM, 'R1', {'1','2'}, {{'R', 100}});
     cktnetlist = add_element(cktnetlist, rM, 'R2', {'1','3'}, {{'R', 100}});
     cktnetlist = add_element(cktnetlist, rM, 'R3', {'2','3'}, {{'R', 100}});
@@ -31,8 +31,7 @@ function cktnetlist = nal_nbk_ckt_02_report()
     cktnetlist = add_element(cktnetlist, rM, 'R7', {'4','6'}, {{'R', 100}});
     cktnetlist = add_element(cktnetlist, rM, 'R8', {'5','6'}, {{'R', 100}});
 
-%%%% ====================== block 02 (A-network) ================================== %%%
-%   cktnetlist = add_element(cktnetlist, rM, 'R1', {'1','2'}, {{'R', 1e3}});
+% ====================== block 02 (B-network) ==================================
 
     cktnetlist = add_element(cktnetlist, rM, 'R9', {'6','7'}, {{'R', 1e5}});
     cktnetlist = add_element(cktnetlist, rM, 'R10', {'6','8'}, {{'R', 1e5}});

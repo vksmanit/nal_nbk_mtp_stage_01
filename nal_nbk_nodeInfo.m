@@ -9,7 +9,6 @@ function nodeInfo = nal_nbk_nodeInfo(circuitdata)
 % --------------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%% August 24, 2017 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%% Author : Vipin Kumar Soni %%%%%%%%%%%%%%%%%%%%%%%
 
     for i = 1:length(circuitdata.nodenames)
 
@@ -21,7 +20,7 @@ function nodeInfo = nal_nbk_nodeInfo(circuitdata)
     end
         
     % modifing it to add 'gnd' node connection 
-    % modified by vipin kumar soni (21/09/2017)
+    % modified by (21/09/2017)
 
     nodeInfo{i+1}.name = circuitdata.groundnodename;
     for j = 1 : length(circuitdata.elements)

@@ -10,15 +10,10 @@ function g1_of_tree_of_A = nal_nbk_nodeInfo_of_tree_of_A(cktnetlist)
 % --------------------------------------------------------------------------------
 
 % -------------------------- Written on : Oct 13, 2017 ---------------------------
-
     [nodeVisited,edgeId_of_tree_of_A,dfs_nodes_of_A]= nal_nbk_dfs_search_of_G_dot_A(cktnetlist);
-        
-
     N = length(nodeVisited);
     g1_of_tree_of_A = cell(N,1); %cell(length(dfs_nodes_of_A),1);
-    
     for edgeId = edgeId_of_tree_of_A
-        
         edge = cktnetlist.elements{edgeId}.nodes;
         node1 = edge(1,1);
         node2 = edge(1,2);
@@ -34,14 +29,7 @@ function g1_of_tree_of_A = nal_nbk_nodeInfo_of_tree_of_A(cktnetlist)
         else 
             node2 = str2num(cell2mat(node2));
         end
-
-        %if(find(node1 == dfs_nodes_of_A) || find(node2 == dfs_nodes_of_A))
-        
         g1_of_tree_of_A{node1} = [g1_of_tree_of_A{node1},edgeId];
         g1_of_tree_of_A{node2} = [g1_of_tree_of_A{node2},edgeId];
-
     end
-
-
-
 end

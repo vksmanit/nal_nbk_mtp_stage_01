@@ -43,8 +43,6 @@ function [nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A,dfs_nodes_of_B]=  nal_n
     fprintf('------------End of search in part A-------------\n');
     fprintf('------------------------------------------------\n');
 %    pause(1)
-
-
     nal_nbk_start_node_of_G(cktnetlist);
 end 
 
@@ -57,38 +55,9 @@ function  nal_nbk_start_node_of_G(cktnetlist)
     for i = 1:length(g1_of_B)
         if(nodeVisited(i)==0 )%&& ~isempty(g1_of_B{i}))
                 start_node = i;
-%                break;
- %       end
-  %  end
-    
-   % if(start_node <= max(find(~cellfun(@isempty,g1_of_B)))) %&& ~isempty(g1_of_B{start_node}))
-   %if (~isempty(g1_of_B{start_node})                       %%% problem : with the if condition this enters into infinite loop :
-                                                            %%%         : without if condition if returns all the nodeVisited to 1
-
-       nal_nbk_dfs_search(start_node);
-   %else 
-    %   for i = start_node:length(g1_of_B)
-     %      if (~isempty(g1_of_B{start_node}))
-        %       nodeVisited = nal_nbk_dfs_search(start_node);
-         %  end
-       %end
-   %end
-%%%%%%%%%%%%%%%%%%%-------%%%%%------%%%% CRITICAL FLOW LOSS ---
-% we are when coming back after doing nal_nbk_dfs_search(start_node) function 
-% i value is 1 BUT we don't need 1
+                nal_nbk_dfs_search(start_node);
         end
     end
-
-        
-
-    %if (length(nonzeros(nodeVisited))<length(nodeVisited))% && ~isempty(g1_of_B{i})) % added && ~isempty(g1_of_B{i}) condtion to make it 
-     %   nal_nbk_start_node_of_G(cktnetlist);
-    %else 
-     %   return ;
-    %end
-
-
-
 end 
 
 function nal_nbk_dfs_search(nodeId)
@@ -117,9 +86,6 @@ function nal_nbk_dfs_search(nodeId)
             otherNode = str2num(cell2mat(edge(1,2)));
         end
         if otherNode == nodeId 
-            %% adding following if condition that if otherNode is compare to 'gnd' cell2mat() return
-            %% empty cell hence it is the gnd node.
-            %% we assign 'gnd' node as the last nodeId.
             otherNode = str2num(cell2mat(edge(1,1)));
             if (isempty(otherNode))
                 otherNode = length(nodeVisited);
@@ -129,8 +95,6 @@ function nal_nbk_dfs_search(nodeId)
         if 1 == nodeVisited(otherNode)
             continue
         end
-        %% this if__else__end is written for the print_ohterNode
-        %% if node is gnd instead of printing it last node it prints node 0
         if otherNode == length(nodeVisited)
             print_otherNode = 0;
         else
@@ -142,11 +106,8 @@ function nal_nbk_dfs_search(nodeId)
 
         edgeId_of_tree_of_G = [ edgeId_of_tree_of_G, edgeId];
         fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
-       % fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
-
-
 end
 
 
