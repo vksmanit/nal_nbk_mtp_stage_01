@@ -29,9 +29,9 @@ function [nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A,dfs_nodes_of_B]= nal_nb
     %nodeVisited = zeros(length(g1_of_B),1);
     [nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A]= nal_nbk_dfs_search_of_G_dot_A(cktnetlist);
     % this will first do ddfs on A-part and then we will extend it to part B
-    fprintf('------------------------------------------------\n');
-    fprintf('------------End of search in part A-------------\n');
-    fprintf('------------------------------------------------\n');
+    %fprintf('------------------------------------------------\n');
+    %fprintf('------------End of search in part A-------------\n');
+    %fprintf('------------------------------------------------\n');
 %    pause(1)
     temp_node = find(common_nodes)';
     for i =(temp_node) 
@@ -84,7 +84,7 @@ function nal_nbk_dfs_search(nodeId)
         end
         dfs_nodes_of_B = [dfs_nodes_of_B,otherNode];
         edgeId_of_tree_of_G = [ edgeId_of_tree_of_G, edgeId];
-        fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
+        %fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
     dfs_nodes_of_B = unique(dfs_nodes_of_B);

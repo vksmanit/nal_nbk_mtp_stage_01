@@ -16,7 +16,6 @@ function super_node =  nal_nbk_super_node_of_forest_of_G(cktnetlist)
     global dfs_nodes_of_forest_of_G;
     global counter;
     global nodeVisited;
-
     counter = 0;
     [edges, g1_of_forest,g1] = nal_nbk_nodeInfo_forest_of_G(cktnetlist);
     nodeVisited = zeros(length(g1_of_forest));
@@ -27,9 +26,7 @@ function super_node =  nal_nbk_super_node_of_forest_of_G(cktnetlist)
                 %% can we do dfs(count, : ) here???/
                 counter = counter+1;
                 nal_nbk_dfs_search(start_node);
-
                 super_node(counter,:) = {dfs_nodes_of_forest_of_G};
-                
                 dfs_nodes_of_forest_of_G = [];
         end
     end
@@ -79,7 +76,7 @@ function nal_nbk_dfs_search(nodeId)
             print_otherNode = otherNode;
         end
         dfs_nodes_of_forest_of_G = [dfs_nodes_of_forest_of_G,otherNode];
-        fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
+        %fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
 end

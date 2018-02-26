@@ -96,8 +96,8 @@ function nal_nbk_dfs_search(nodeId)
         end
         dfs_nodes_of_B = [dfs_nodes_of_B,otherNode];
         edgeId_of_tree_of_B = [edgeId_of_tree_of_B,edgeId];
-        fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
-       % fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', otherNode, nodeId, edgeId);
+        %fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
+       % %fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
 end

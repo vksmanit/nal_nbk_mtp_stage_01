@@ -14,13 +14,9 @@ function [edges,g1_of_supernode] =  nal_nbk_nodeInfo_with_edge_identity_of_super
     global edges;
     super_node  =  nal_nbk_super_node_of_forest_of_G(cktnetlist);
     N = length(super_node);
-
     g1_of_supernode = cell(N,1);
-    
     for i = 1: length(cktnetlist.elements)
-
         edges = [edges;cktnetlist.elements{i}.nodes];
-
         edge = cktnetlist.elements{i}.nodes;
         node1 = edge(1,1);
         node2 = edge(1,2);
@@ -30,7 +26,6 @@ function [edges,g1_of_supernode] =  nal_nbk_nodeInfo_with_edge_identity_of_super
         else 
             node1 = str2num(cell2mat(node1));
         end
-
         if (strcmp(node2,'gnd'))
             node2 = length(cktnetlist.nodenames)+ 1;
         else 
@@ -47,4 +42,5 @@ function [edges,g1_of_supernode] =  nal_nbk_nodeInfo_with_edge_identity_of_super
                 end
             end
         end
+       % edges = unique(edges);
 end

@@ -29,9 +29,9 @@ function edgeId_of_tree_of_G = nal_nbk_tree_for_hybrid_analysis(cktnetlist)
     [edges, g1_of_supernode] = nal_nbk_nodeInfo_with_edge_identity_of_super_node_of_G(cktnetlist);
     super_node_visited = zeros(length(g1_of_supernode),1);
    
-    fprintf('-------------------------------------------------------\n');
-    fprintf('------------ starting search in supernode -------------\n');
-    fprintf('-------------------------------------------------------\n');
+    %fprintf('-------------------------------------------------------\n');
+    %fprintf('------------ starting search in supernode -------------\n');
+    %fprintf('-------------------------------------------------------\n');
     nal_nbk_dfs_search(1);
 end
 
@@ -69,7 +69,7 @@ function nal_nbk_dfs_search(superNodeId)
         
         edgeId_of_tree_of_G = [edgeId_of_tree_of_G,edgeId];
 
-        fprintf('visiting SuperNode [%d] from [%d] using edgeId [%d]\n', otherSuperNode, superNodeId,edgeId);
+        %fprintf('visiting SuperNode [%d] from [%d] using edgeId [%d]\n', otherSuperNode, superNodeId,edgeId);
         nal_nbk_dfs_search (otherSuperNode);
     end
 
