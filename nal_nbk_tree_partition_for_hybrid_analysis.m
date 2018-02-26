@@ -13,7 +13,6 @@ function [hybridTreeEdgeId_of_A, hybridTreeEdgeId_of_B] = nal_nbk_tree_partition
     nal_nbk_A_and_B_part = nal_nbk_partition(cktnetlist);
     hybridTreeEdgeId_of_A = [];
     hybridTreeEdgeId_of_B = [];
-
     for treeEdgeId = edgeId_of_tree_for_hybrid_analysis
         if (nal_nbk_A_and_B_part(treeEdgeId) == 1)
             hybridTreeEdgeId_of_A = [hybridTreeEdgeId_of_A,treeEdgeId];
@@ -21,5 +20,4 @@ function [hybridTreeEdgeId_of_A, hybridTreeEdgeId_of_B] = nal_nbk_tree_partition
             hybridTreeEdgeId_of_B = [hybridTreeEdgeId_of_B,treeEdgeId];
         end
     end
-
 end

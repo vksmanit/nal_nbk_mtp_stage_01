@@ -18,23 +18,13 @@ function L_branch = nal_nbk_L_branch_hybrid_analysis(cktnetlist)
     common_nodes = nal_nbk_A_and_B_common_nodes(cktnetlist);
     [nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A,dfs_nodes_of_B]= nal_nbk_dfs_search_of_G(cktnetlist);
     hybridLinkEdgeId_of_B = [];
-
     super_node = {dfs_nodes_of_B};
-
     % this for loop is to find the hybridLinkEdgeId_of_B of B;
     for i = 1:length(nal_nbk_A_and_B_part)
         if( nal_nbk_A_and_B_part(i) == 0 && isempty(find(i == hybridTreeEdgeId_of_B)))
             hybridLinkEdgeId_of_B = [hybridLinkEdgeId_of_B, i] ;
         end
     end
-
-
-    %for edgeId
-
-
-
-    % this for loop will form the super_nodes which has nodes_of_tree_of_B_part in hybrid tree
-
     for edgeId = hybridTreeEdgeId_of_B
         nodeId = cktnetlist.elements{edgeId}.nodes;
         start_node = nodeId(1);
@@ -57,8 +47,6 @@ function L_branch = nal_nbk_L_branch_hybrid_analysis(cktnetlist)
             super_node = super_node;
         end
     end
-
-    % this for loop will give the edgeId of L-Branch
     for edgeId = hybridLinkEdgeId_of_B
         nodeId = cktnetlist.elements{edgeId}.nodes;
         start_node = nodeId(1);
@@ -80,43 +68,4 @@ function L_branch = nal_nbk_L_branch_hybrid_analysis(cktnetlist)
             L_branch = [L_branch,edgeId];
         end
     end
-
-            
-
-
-
-
-
-
-%    nal_nbk_A_and_B_part = nal_nbk_partition(cktnetlist);
-    %[hybridTreeEdgeId_of_A, hybridTreeEdgeId_of_B] = nal_nbk_tree_partition_for_hybrid_analysis(cktnetlist);
-    %L_branch = []; 
-    %%common_nodes = nal_nbk_A_and_B_common_nodes(cktnetlist);
-    %%[nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A,dfs_nodes_of_B]= nal_nbk_dfs_search_of_G(cktnetlist);
-    %%hybridLinkEdgeId_of_B = [];
-%%
-    %%for i = 1:length(nal_nbk_A_and_B_part)
-        %%if( nal_nbk_A_and_B_part(i) == 0 && isempty(find(i == hybridTreeEdgeId_of_B)))
-            %%hybridLinkEdgeId_of_B = [hybridLinkEdgeId_of_B, i] ;
-        %%end
-    %%end
-%%
-    %%for edgeId = hybridLinkEdgeId_of_B
-        %%nodeId = cktnetlist.elements{edgeId}.nodes;
-        %%start_node = str2num(cell2mat(nodeId(1)));
-        %%end_node = str2num(cell2mat(nodeId(2)));
-       %% 
-        %%if (common_nodes(start_node) == 1 )%&& common_nodes(end_node) == 1)
-   %%%     if(find(start_node==common_nodes) && (end_node == common_nodes))
-            %%if(find(dfs_nodes_of_B==end_node))
-                %%L_branch = [L_branch, edgeId];
-            %end
-        %else%if(common_nodes(end_node) == 1)
-            %%if(find(dfs_nodes_of_B==start_node))
-                %%L_branch = [L_branch, edgeId];
-            %%end
-        %%end
-       %% 
-       %% 
-    %%end
 end

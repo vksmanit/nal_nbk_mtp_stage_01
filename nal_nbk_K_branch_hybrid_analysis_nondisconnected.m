@@ -4,16 +4,10 @@ function coloops = nal_nbk_K_branch_hybrid_analysis_nondisconnected(cktnetlist)
     % but when run for ckt_01, giving the same coloops 
     coloops = [];
     modified_g1_of_tree = find_cell_of_coloops(cktnetlist);
-    
     for i = 1:length(modified_g1_of_tree)
         coloops = [coloops, modified_g1_of_tree{i}];
     end
-
     coloops = unique(coloops);
-    
-
-
-
 end
 
 function modified_g1_of_tree = find_cell_of_coloops(cktnetlist)
@@ -30,11 +24,7 @@ function modified_g1_of_tree = find_cell_of_coloops(cktnetlist)
         end
     end
     recursive_function_to_remove_coloop(g1_of_tree_of_A);
-
-
 end
-
-
 
 function recursive_function_to_remove_coloop (g1_of_tree)
     global uncommon_nodes;
@@ -49,8 +39,6 @@ function recursive_function_to_remove_coloop (g1_of_tree)
             return;
         end
     end
-
-
     for i = 1:length(g1_of_tree)
         index = find(g1_of_tree{i} == edge_entry_in_node_i);
         if (index)
@@ -58,13 +46,7 @@ function recursive_function_to_remove_coloop (g1_of_tree)
             break;
         end
     end
-
-    
-
     modified_g1_of_tree = g1_of_tree;
-
     recursive_function_to_remove_coloop(modified_g1_of_tree)
-
-
 end
 

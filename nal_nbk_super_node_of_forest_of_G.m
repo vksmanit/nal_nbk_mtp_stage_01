@@ -76,7 +76,6 @@ function nal_nbk_dfs_search(nodeId)
             print_otherNode = otherNode;
         end
         dfs_nodes_of_forest_of_G = [dfs_nodes_of_forest_of_G,otherNode];
-        %fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
 end
