@@ -19,7 +19,7 @@ function [nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A,dfs_nodes_of_B]=  nal_n
 
 % This function is have some problem with the nal_nbk_ckt_02_v2();
 % the nal_nbk_ckt_02_v2 --> here only node6 is interchanged with 'gnd' in nal_nbk_ckt_02
-% Modified the code with if else condition in line no. 100, to overcome the 'gnd' node problme
+% Modified the code with if else condition in to overcome the 'gnd' node problme
 % Same modification done to nal_nbk_dfs_search_of_G_dot_A(cktnetlist) -----------
 % --------------------------modified on : Oct 03, 2017 ---------------------------
 % This code is modified to give edgeId_of_tree_of_G that is full graph, but in
