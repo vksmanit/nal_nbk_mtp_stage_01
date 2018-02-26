@@ -21,9 +21,6 @@ function edgeId_of_tree_of_G = nal_nbk_dfs_search_of_supernode_of_G(cktnetlist)
     global edgeId_of_tree_of_G;
 
     [nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A,dfs_nodes_of_B] = nal_nbk_modified_dfs_search_of_G(cktnetlist);
-
-
-    
     graph_of_super_node=  nal_nbk_graph_info_of_super_node(cktnetlist);
   
     [edges, g1_of_supernode] = nal_nbk_nodeInfo_with_edge_identity_of_super_node_of_G(cktnetlist);

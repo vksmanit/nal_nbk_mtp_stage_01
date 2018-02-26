@@ -36,11 +36,7 @@ function [edges,g1_of_supernode] =  nal_nbk_nodeInfo_with_edge_identity_of_super
         else 
             node2 = str2num(cell2mat(node2));
         end
-
-
-
         for j = 1:N
-
             if(~isempty(find(super_node{j} == node1))) % node1 is in super_node
                 if(isempty(find(super_node{j} == node2))) % node2 is not is super_node
                     g1_of_supernode{j} = [g1_of_supernode{j},i];
@@ -51,11 +47,4 @@ function [edges,g1_of_supernode] =  nal_nbk_nodeInfo_with_edge_identity_of_super
                 end
             end
         end
-
-
-        %    g1{node1} = [g1{node1}, i];
-    %        g1{node2} = [g1{node2}, i];
-   %     %end
-        
- 
 end

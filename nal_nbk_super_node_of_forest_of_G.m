@@ -33,39 +33,7 @@ function super_node =  nal_nbk_super_node_of_forest_of_G(cktnetlist)
                 dfs_nodes_of_forest_of_G = [];
         end
     end
-
-
-
-
-    %nal_nbk_start_node_of_G(cktnetlist);  % here we are starting with node no. 01 -- as starting nod
 end
-
-%function nal_nbk_start_node_of_G(cktnetlist)
-    %%global nodeVisited;
-    %%global g1_of_forest;
-    %%global edges;
-    %%global counter;
-   %%% global super_node;
-    %%global edgeId_of_tree_of_G;
-    %%global dfs_nodes_of_forest_of_G;
-    %%for i = 1:length(g1_of_forest)
-        %%if(nodeVisited(i)==0 )%&& ~isempty(g1_of_forest{i}))
-                %start_node = i;i
-                %%% can we do dfs(count, : ) here???/
-                %counter = counter+1;
-                %nal_nbk_dfs_search(start_node);
-%%
-                %%super_node(counter,:) = {dfs_nodes_of_forest_of_G}
-               %% 
-                %%dfs_nodes_of_forest_of_G = [];
-        %%end
-    %%end
-%end 
-
-
-
-
-
 
 function nal_nbk_dfs_search(nodeId)
     global g1_of_forest;
@@ -81,7 +49,6 @@ function nal_nbk_dfs_search(nodeId)
         elseif(nodeId ~= dfs_nodes_of_forest_of_G(end))
             dfs_nodes_of_forest_of_G = [dfs_nodes_of_forest_of_G,nodeId];
         end
-
     end
     adjEdgeIdsOfCurrentNode = g1_of_forest{nodeId};
     for edgeId=adjEdgeIdsOfCurrentNode
@@ -101,7 +68,6 @@ function nal_nbk_dfs_search(nodeId)
                 otherNode = length(nodeVisited);
             end
         end
- 
         if 1 == nodeVisited(otherNode)
             continue
         end
@@ -112,15 +78,8 @@ function nal_nbk_dfs_search(nodeId)
         else
             print_otherNode = otherNode;
         end
-           
-
         dfs_nodes_of_forest_of_G = [dfs_nodes_of_forest_of_G,otherNode];
-
         fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
-       % fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
-
- 
-    
 end

@@ -1,6 +1,6 @@
 function[nodeVisited, edgeId_of_tree_of_B,dfs_nodes_of_B] =  nal_nbk_dfs_search_of_G_dot_B(cktnetlist)
 % --------------------------------------------------------------------------------
-% Syntax : [nodeVisited, edgeId_of_tree_of_B,dfs_nodes_of_B]= nal_nbk_dfs_search_of_G(cktnetlist)
+% Syntax : [nodeVisited, edgeId_of_tree_of_B,dfs_nodes_of_B]= nal_nbk_dfs_search_of_G_dot_B(cktnetlist)
 % 
 % This function will return 'node_visited' vector representing visited nodes 
 % of Graph G.
@@ -34,13 +34,6 @@ function[nodeVisited, edgeId_of_tree_of_B,dfs_nodes_of_B] =  nal_nbk_dfs_search_
     edgeId_of_tree_of_B = [];
     [edges ,g1_of_B] = nal_nbk_nodeInfo_with_edge_identity_of_B(cktnetlist);
     nodeVisited = zeros(length(g1_of_B),1);
-    %nodeVisited = nal_nbk_dfs_search_of_G_dot_A(cktnetlist) % this will first do ddfs on A-part and then we will extend it to part B
-   % fprintf('------------------------------------------------\n');
-    %fprintf('------------End of search in part A-------------\n');
-    %fprintf('------------------------------------------------\n');
-   % pause(1)
-
-
     nal_nbk_start_node_of_G(cktnetlist);
 end 
 
@@ -52,39 +45,10 @@ function  nal_nbk_start_node_of_G(cktnetlist)
     global dfs_nodes_of_B;
     for i = 1:length(g1_of_B)
         if(nodeVisited(i)==0 )%&& ~isempty(g1_of_B{i}))
-                start_node = i;
-%                break;
- %       end
-  %  end
-    
-   % if(start_node <= max(find(~cellfun(@isempty,g1_of_B)))) %&& ~isempty(g1_of_B{start_node}))
-   %if (~isempty(g1_of_B{start_node})                       %%% problem : with the if condition this enters into infinite loop :
-                                                            %%%         : without if condition if returns all the nodeVisited to 1
-
-       nal_nbk_dfs_search(start_node);
-   %else 
-    %   for i = start_node:length(g1_of_B)
-     %      if (~isempty(g1_of_B{start_node}))
-        %       nodeVisited = nal_nbk_dfs_search(start_node);
-         %  end
-       %end
-   %end
-%%%%%%%%%%%%%%%%%%%-------%%%%%------%%%% CRITICAL FLOW LOSS ---
-% we are when coming back after doing nal_nbk_dfs_search(start_node) function 
-% i value is 1 BUT we don't need 1
+            start_node = i;
+            nal_nbk_dfs_search(start_node);
         end
     end
-
-        
-
-    %if (length(nonzeros(nodeVisited))<length(nodeVisited))% && ~isempty(g1_of_B{i})) % added && ~isempty(g1_of_B{i}) condtion to make it 
-     %   nal_nbk_start_node_of_G(cktnetlist);
-    %else 
-     %   return ;
-    %end
-
-
-
 end 
 
 function nal_nbk_dfs_search(nodeId)
@@ -120,7 +84,6 @@ function nal_nbk_dfs_search(nodeId)
                 otherNode = length(nodeVisited);
             end
         end
- 
         if 1 == nodeVisited(otherNode)
             continue
         end
@@ -137,8 +100,6 @@ function nal_nbk_dfs_search(nodeId)
        % fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
-
-
 end
 
 

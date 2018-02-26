@@ -49,40 +49,10 @@ function  nal_nbk_start_node_of_G_dot_A(cktnetlist)
     global dfs_nodes_of_A;
     for i = 1:length(g1_of_A)
         if(nodeVisited(i)==0 )%&& ~isempty(g1_of_A{i}))
-                start_node = i;
-                %dfs_nodes_of_A = [dfs_nodes_of_A,start_node];
-%                break;
- %       end
-  %  end
-    
-   % if(start_node <= max(find(~cellfun(@isempty,g1_of_A)))) %&& ~isempty(g1_of_A{start_node}))
-   %if (~isempty(g1_of_A{start_node})                       %%% problem : with the if condition this enters into infinite loop :
-                                                            %%%         : without if condition if returns all the nodeVisited to 1
-
-       nal_nbk_dfs_search(start_node);
-   %else 
-    %   for i = start_node:length(g1_of_A)
-     %      if (~isempty(g1_of_A{start_node}))
-        %       nodeVisited = nal_nbk_dfs_search(start_node);
-         %  end
-       %end
-   %end
-%%%%%%%%%%%%%%%%%%%-------%%%%%------%%%% CRITICAL FLOW LOSS ---
-% we are when coming back after doing nal_nbk_dfs_search(start_node) function 
-% i value is 1 BUT we don't need 1
+            start_node = i;
+            nal_nbk_dfs_search(start_node);
         end
     end
-
-        
-
-    %if (length(nonzeros(nodeVisited))<length(nodeVisited))% && ~isempty(g1_of_A{i})) % added && ~isempty(g1_of_A{i}) condtion to make it 
-     %   nal_nbk_start_node_of_G_dot_A(cktnetlist);
-    %else 
-     %   return ;
-    %end
-
-
-
 end 
 
 function nal_nbk_dfs_search(nodeId)
@@ -127,19 +97,10 @@ function nal_nbk_dfs_search(nodeId)
         end
 
         dfs_nodes_of_A = [dfs_nodes_of_A,otherNode];
-        %if(otherNode ==nodeId)
-         %   dfs_nodes_of_A =  
-        %else
-         %   lfkds
-        %end
-
         edgeId_of_tree_of_A = [edgeId_of_tree_of_A, edgeId];
         fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
-       % fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
-
-
 end
 
 
