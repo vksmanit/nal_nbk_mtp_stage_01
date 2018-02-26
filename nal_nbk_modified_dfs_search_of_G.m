@@ -33,68 +33,12 @@ function [nodeVisited,edgeId_of_tree_of_G,dfs_nodes_of_A,dfs_nodes_of_B]= nal_nb
     fprintf('------------End of search in part A-------------\n');
     fprintf('------------------------------------------------\n');
 %    pause(1)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     temp_node = find(common_nodes)';
-
-
     for i =(temp_node) 
-       
-        %start_node = find(common_nodes)(i)
-    
         nal_nbk_dfs_search(i);
-    
     end
-
-
-  %  nal_nbk_start_node_of_G(cktnetlist);
 end 
 
-%function  nal_nbk_start_node_of_G(cktnetlist)
-    %%global g1_of_B;
-    %%global nodeVisited;
-    %%global edges;
-    %%global edgeId_of_tree_of_G;
-    %%global dfs_nodes_of_B;
-    %%common_nodes = nal_nbk_A_and_B_common_nodes(cktnetlist);
-    %%for i = find(common_nodes)
-   %%% for i = 1:length(g1_of_B)
-        %%if(nodeVisited(i)==0 )%&& ~isempty(g1_of_B{i}))
-                %%start_node = i;
-%%%                break;
- %%%       end
-  %%%  end
-   %% 
-   %%% if(start_node <= max(find(~cellfun(@isempty,g1_of_B)))) %&& ~isempty(g1_of_B{start_node}))
-   %%%if (~isempty(g1_of_B{start_node})                       %%% problem : with the if condition this enters into infinite loop :
-                                                            %%%%%         : without if condition if returns all the nodeVisited to 1
-%%
-       %%nal_nbk_dfs_search(start_node);
-   %%%else 
-    %%%   for i = start_node:length(g1_of_B)
-     %%%      if (~isempty(g1_of_B{start_node}))
-        %%%       nodeVisited = nal_nbk_dfs_search(start_node);
-         %%%  end
-       %%%end
-   %%%end
-%%%%%%%%%%%%%%%%%%%%%-------%%%%%------%%%% CRITICAL FLOW LOSS ---
-%%% we are when coming back after doing nal_nbk_dfs_search(start_node) function 
-%%% i value is 1 BUT we don't need 1
-        %%end
-    %%end
-%%
-       %% 
-%%
-    %%%if (length(nonzeros(nodeVisited))<length(nodeVisited))% && ~isempty(g1_of_B{i})) % added && ~isempty(g1_of_B{i}) condtion to make it 
-     %%%   nal_nbk_start_node_of_G(cktnetlist);
-    %%%else 
-     %%%   return ;
-    %%%end
-%
-
-%
-%%end 
-%
 function nal_nbk_dfs_search(nodeId)
 
     global g1_of_B;
@@ -109,7 +53,6 @@ function nal_nbk_dfs_search(nodeId)
         elseif(nodeId ~= dfs_nodes_of_B(end))
             dfs_nodes_of_B = [dfs_nodes_of_B,nodeId];
         end
-
     end
     adjEdgeIdsOfCurrentNode = g1_of_B{nodeId};
     for edgeId=adjEdgeIdsOfCurrentNode
@@ -129,7 +72,6 @@ function nal_nbk_dfs_search(nodeId)
                 otherNode = length(nodeVisited);
             end
         end
- 
         if 1 == nodeVisited(otherNode)
             continue
         end
@@ -140,19 +82,12 @@ function nal_nbk_dfs_search(nodeId)
         else
             print_otherNode = otherNode;
         end
-           
-
         dfs_nodes_of_B = [dfs_nodes_of_B,otherNode];
-
         edgeId_of_tree_of_G = [ edgeId_of_tree_of_G, edgeId];
         fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', print_otherNode, nodeId, edgeId);
-       % fprintf ('visiting node [%d] from [%d] using edgeId [%d]\n', otherNode, nodeId, edgeId);
         nal_nbk_dfs_search (otherNode);
     end
-
-
-
-
+    dfs_nodes_of_B = unique(dfs_nodes_of_B);
 end
 
 
