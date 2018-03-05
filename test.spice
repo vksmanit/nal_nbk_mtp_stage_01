@@ -1,0 +1,17 @@
+
+
+
+r1 1 0 1k 
+r2 1 2 1k
+l1 2 0 1
+i1 1 0 pulse(0 1 0 2n 2n 20m 30m)
+
+
+.dc 
+.tran 0.1m 10m 
+
+.control 
+run 
+plot v(1)
+.endc
+.end
