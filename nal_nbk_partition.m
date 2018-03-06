@@ -14,7 +14,8 @@ function nal_nbk_A_and_B_part = nal_nbk_partition(cktnetlist)
    
     nal_nbk_A_and_B_part = zeros(1,length(cktnetlist.elements));
     for i = 1:length(cktnetlist.elements) %iterating through all the elements of cktnetlist
-        if (strcmp(cktnetlist.elements{i}.name(1), 'V')) %compare it if it is V-source
+        %if (strcmp(cktnetlist.elements{i}.name(1), 'V')) %compare it if it is V-source
+        if (strcmp(cktnetlist.elements{i}.name(1), 'I')) %compare it if it is I-source
             nal_nbk_A_and_B_part(i) = 1;
         end
         if (strcmp(cktnetlist.elements{i}.name(1), 'R')) %compare it if it is Resistance 
