@@ -27,7 +27,7 @@ function cktnetlist = nal_nbk_FPGA_ckt_01()
     cktnetlist = add_element(cktnetlist, rM, 'R7', {'2','5'}, {{'R', 10000}});    
     cktnetlist = add_element(cktnetlist, rM, 'R8', {'4','5'}, {{'R', 10000}}) ;   
     cktnetlist = add_element(cktnetlist, rM, 'R9', {'4','gnd'}, {{'R', 10000}}); 
-    cktnetlist = add_element(cktnetlist, iM, 'V10', {'5', 'gnd'},{},{{'DC', 10}});
+    cktnetlist = add_element(cktnetlist, vM, 'V10', {'5', 'gnd'},{},{{'DC', 10}});
     cktnetlist = add_element(cktnetlist, rM, 'R11', {'5','6'}, {{'R', 10000}});    
     cktnetlist = add_element(cktnetlist, rM, 'R12', {'6','gnd'}, {{'R', 10000}});
     cktnetlist ;
