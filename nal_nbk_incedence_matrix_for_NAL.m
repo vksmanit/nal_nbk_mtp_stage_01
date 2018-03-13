@@ -1,4 +1,4 @@
-function A =  nal_nbk_incedence_matrix_for_NAL(cktnetlist)
+function  incedence_matrix_for_NAL =  nal_nbk_incedence_matrix_for_NAL(cktnetlist)
 % --------------------------------------------------------------------------------
 % syntax :- incdence_matrix_for_NAL = nal_nbk_incedence_matrix_for_NAL(cktnetlist)
 %
